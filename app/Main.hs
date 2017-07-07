@@ -19,6 +19,9 @@ presentation = do
 
   header "自己紹介" profile
 
+  slideTitle .= ""
+  taka "ありがとうございました\n(๑•﹏•)"
+
 
 profile :: Taka ()
 profile = do
