@@ -45,7 +45,6 @@ bigList ss = do
     contentsOption.blockFontSize .= Just 80
     list ss
 
-
 {- tiwnBottomやtwinTopで使う事を想定し、
 要素数が二つ以上ある事をある程度保証するためのHack
 LikeContentのInstance定義が必ず1要素以上返し
@@ -97,6 +96,11 @@ instance LikeContent StringFormat where
 
   toContents2 (Par s) = [parCont2 s]
   toContents2 (Code s) = [codeCont s]
+
+data ImageFormat = Image DrawType String
+instance LikeContent ImageFormat where
+  toContents (Image d f) = [imgCont d f]
+  toContents2 (Image d f) = [imgCont d f]
 
 infixl 4 ~~~~
 (~~~~) :: (LikeContent a, LikeContent b) => a -> b -> JoinedContents
